@@ -7,14 +7,16 @@ class AuthModule {
 
     async register(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body,{
+            console.log(body)
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
             return response.data;
         } catch (error) {
-            throw error.response ? error.response.data : error.message;
+            console.log(error)
+           return error
         }
     }
 
@@ -48,7 +50,18 @@ class AuthModule {
     }
 }
 
+const auth = new AuthModule('https://helloam');
+const data = {
+    password: '23423',
+    email: 'fewfew@fewfew.few',
+    phone: '3242342',
+    userInfo: '432423'
+};
+
+auth.register(data);
+
 export default AuthModule;
+
 
 
 
