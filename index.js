@@ -5,27 +5,31 @@ class AuthModule {
         this.baseURL = baseURL;
     }
 
-    async register(email, password) {
+    async register(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, { email, password });
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body,{
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             return response.data;
         } catch (error) {
             throw error.response ? error.response.data : error.message;
         }
     }
 
-    async confirmEmail(email, confirmationCode) {
+    async confirmEmail(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/confirm-email`, { email, confirmationCode });
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/confirm-email`, body);
             return response.data;
         } catch (error) {
             throw error.response ? error.response.data : error.message;
         }
     }
 
-    async login(email, password) {
+    async login(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/login`, { email, password });
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/login`, body);
             return response.data.token;
         } catch (error) {
             throw error.response ? error.response.data : error.message;
