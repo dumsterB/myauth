@@ -3,19 +3,14 @@ import axios from 'axios';
 class AuthModule {
     constructor(baseURL) {
         this.baseURL = baseURL;
-        this.headers  = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-            'Access-Control-Allow-Headers': '*',
-        };
     }
     async register(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body, {
-                headers: this.headers
-            });
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body);
+            console.log(response)
             return response.data;
         } catch (error) {
+            console.log(error)
            return error
         }
     }

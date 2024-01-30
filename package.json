@@ -1,6 +1,6 @@
 {
   "name": "@dumster/auth_module",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "auth module",
   "type": "module",
   "main": "index.js",
