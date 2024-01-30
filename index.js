@@ -56,7 +56,7 @@ class AuthModule {
 
     async getMe(body) {
         try {
-            const response = await axios.get(`${this.baseURL}/auth-back/api/v2/getUserInfo`, body);
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/getUserInfo`, body);
             return response.data;
         } catch (error) {
             return error
