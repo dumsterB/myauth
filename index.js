@@ -6,11 +6,13 @@ class AuthModule {
     }
     async register(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body);
-            console.log(response)
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             return response.data;
         } catch (error) {
-            console.log(error)
            return error
         }
     }
