@@ -25,9 +25,9 @@ class AuthModule {
             return error
         }
     }
-    async sendEmailConfirmationLink(body) {
+    async sendConfirmCode(body) {
         try {
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/sendEmailConfirmationLink`, body);
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/sendConfirmCode`, body);
             return response.data;
         } catch (error) {
             return error
@@ -55,15 +55,12 @@ class AuthModule {
     }
 }
 
-const auth = new AuthModule('https://helloam');
+/*const auth = new AuthModule('https://helloam');
 const data = {
-    password: '23423',
     email: 'fewfew@fewfew.few',
-    phone: '3242342',
-    userInfo: '432423'
 };
 
-auth.register(data);
+auth.sendConfirmCode(data);*/
 
 export default AuthModule;
 
