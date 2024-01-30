@@ -53,6 +53,15 @@ class AuthModule {
             return error
         }
     }
+
+    async getMe(body) {
+        try {
+            const response = await axios.get(`${this.baseURL}/auth-back/api/v2/getUserInfo`, body);
+            return response.data;
+        } catch (error) {
+            return error
+        }
+    }
 }
 
 /*const auth = new AuthModule('https://helloam');
