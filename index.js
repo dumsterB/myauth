@@ -25,6 +25,14 @@ class AuthModule {
             return error
         }
     }
+    async sendEmailConfirmationLink(body) {
+        try {
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/sendEmailConfirmationLink`, body);
+            return response.data;
+        } catch (error) {
+            return error
+        }
+    }
 
     async login(body) {
         try {
