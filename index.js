@@ -7,7 +7,7 @@ class AuthModule {
     async register(body) {
         try {
             console.log(body)
-            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, {email:body.email,password:body.password}, {
+            const response = await axios.post(`${this.baseURL}/auth-back/api/v2/register`, body, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -23,16 +23,16 @@ class AuthModule {
             const response = await axios.post(`${this.baseURL}/auth-back/api/v2/confirm-email`, body);
             return response.data;
         } catch (error) {
-            throw error.response ? error.response.data : error.message;
+            return error
         }
     }
 
     async login(body) {
         try {
             const response = await axios.post(`${this.baseURL}/auth-back/api/v2/login`, body);
-            return response.data.token;
+            return response.data;
         } catch (error) {
-            throw error.response ? error.response.data : error.message;
+            return error
         }
     }
 
@@ -43,7 +43,7 @@ class AuthModule {
             });
             return response.data;
         } catch (error) {
-            throw error.response ? error.response.data : error.message;
+            return error
         }
     }
 }
